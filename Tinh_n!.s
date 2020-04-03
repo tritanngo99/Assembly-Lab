@@ -1,0 +1,19 @@
+;
+; CS1021 2018/2019	Lab 1
+; 
+
+	AREA	RESET, CODE, READONLY
+	ENTRY
+
+;Tinh n!
+; Tinh 6!
+  MOV R1,#6 ;R1=6
+  MOV R0,#1 ; R0=1;
+L1 CMP R1,#1 ;N>1?
+   BLS L2
+   MUL R0,R1,R0 ;R=R*N;
+   SUB R1,R1,#1 ; N=N-1
+   B L1  ;REPEAT
+ 
+L2 B L2
+; kET QUA: 0X2D0 = 2*16^2+13.16+0 = 720 =6! (DUNG)
