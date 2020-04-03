@@ -1,0 +1,15 @@
+;
+; CS1021 2018/2019	Lab 1
+; 
+
+	AREA	RESET, CODE, READONLY
+	ENTRY
+
+;
+; start of code
+ MOV R1,#(3)
+ CMP R1,#0
+ BGE L
+ RSB R1,R1,#0
+
+L B L
