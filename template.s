@@ -31,6 +31,18 @@
 ;Zero Set --- BEQ --- Equal
 ;Zero Clear --- BNE --- Not equal
 ;-------------------------------
-
-   
-  
+; ARM Logic Instructions 
+;+ AND dst = src1 AND src2  ---  src1&src2
+;+ EOR dst = src1 EOR src2  ---  src1^src2
+;+ ORR dst = src1 ORR src2  ---  src1|src2
+;+ MVN dst = NOT src2  --- ~src2
+;+ ORN dst = src1 NOR src2 --- ~(src1|src2)
+;+ BIC dst = src1 AND NOT src2 --- (src1&~src2) 
+;----------------------------------
+; ARM Shift and Rotate
+; + Logical Shift Left (LSL)  --- a<<n
+;+Logical Shift Right (LSR) --- a>>n
+;+ Arithmetic Shift Right (ASR)
+;+ Rotate Right (ROR)
+;+ Rotate Right with eXtend(RRX)
+;+ NB : these are NOT instruction in the same sense as ADD, SUB, or ORR
