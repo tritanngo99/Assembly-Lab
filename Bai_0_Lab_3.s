@@ -53,8 +53,8 @@
 ;	else{b=b-a;}
 ;}
 
-    MOV R1,#24; A=24
-	MOV R2,#32; B=32
+    LDR R1,=2415; A=24
+	LDR R2,=3289; B=32
 L0	CMP R1,R2 ; R1!=R2
 	BEQ L1
 	CMP R1,R2 ; R1>R2
@@ -63,3 +63,4 @@ L0	CMP R1,R2 ; R1!=R2
 	B L0
 L1 B L1
 L2 SUB R2,R2,R1
+   B L0
