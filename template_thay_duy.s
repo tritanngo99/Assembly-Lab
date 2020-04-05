@@ -63,7 +63,7 @@ __main			PROC
 				LDR R1,=0x00000011
 				RBIT R2,R1
 				REV R3,R1
-				REV R4,R1
+				REV16 R4,R1
 				REVSH R5,R1
 ;--------------------code tai dau -------------------------								
 stop 			B 		stop     					; dead loop & program hangs here
