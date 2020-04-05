@@ -1,3 +1,5 @@
+; Link:https://web.sonoma.edu/users/f/farahman/sonoma/courses/es310/310_arm/lectures/Chapter_4_Arithmetic_and_Logic_ARM.pdf
+;Link 2:https://web.sonoma.edu/users/f/farahman/sonoma/courses/es310/310_arm/
 ; Template
 ;-------------------------------
 ;     Branch equal 
@@ -39,17 +41,22 @@
 ;+ Rotate Right with eXtend(RRX)
 ;+ NB : these are NOT instruction in the same sense as ADD, SUB, or ORR
 ;----------------------------------------
-;(1) RBIT R1,R0 ;Reverse byte order in a word.
-;(2) REV R1,R0 ; Reverse byte order in each halfword independently. ; 
-;converts 32-bit big-endian data into little-endian data or 32-bit little-endian data into big-endian data.
-;(3) REV16 R1,R0 ; Reverse byte order in the bottom halfword, and sign extend to 32 bits.
-;converts 16-bit big-endian data into little-endian data or 16-bit little-endian data into big-endian data.
-;(4) REVSH R1,R0 ;Reverse the bit order in a 32-bit word.
-;converts either:
-
-;16-bit signed big-endian data into 32-bit signed little-endian data
-
-;16-bit signed little-endian data into 32-bit signed big-endian data.
+;RBIT Rd,Rn 
+;Reverse bit order in a word.
+;for (i = 0; i < 32; i++) Rd[i] ¬ RN[31– i]
+;REV Rd,Rn
+;Reverse byte order in a word.
+;Rd[31:24] ¬ Rn[7:0], Rd[23:16] ¬ Rn[15:8],
+;Rd[15:8] ¬ Rn[23:16], Rd[7:0] ¬ Rn[31:24]
+;REV16 Rd,Rn
+;Reverse byte order in each half-word.
+;Rd[15:8] ¬ Rn[7:0], Rd[7:0] ¬ Rn[15:8],
+;Rd[31:24] ¬ Rn[23:16], Rd[23:16] ¬ Rn[31:24]
+;REVSH Rd,Rn
+;Reverse byte order in bottom half-word and sign
+;extend.
+;Rd[15:8] ¬ Rn[7:0], Rd[7:0] ¬ Rn[15:8],
+;Rd[31:16] ¬ Rn[7] & 0xFFFF
 ;--------------------------------------------
 
 
@@ -60,11 +67,11 @@
 __main			PROC
                 LDR R0,=array
 ;---------------------code tai day--------------------------
-				LDR R1,=0x00000011
-				RBIT R2,R1
-				REV R3,R1
-				REV16 R4,R1
-				REVSH R5,R1
+				LDR R1,=0x111001A0
+				RBIT R2,R1; R2=0x80800088
+				REV R3,R1; R3=0x01010011
+				REV16 R4,R1; R4=0x00110101
+				REVSH R5,R1;R5=0x00000101
 ;--------------------code tai dau -------------------------								
 stop 			B 		stop     					; dead loop & program hangs here
 
