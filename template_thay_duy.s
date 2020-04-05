@@ -58,6 +58,8 @@
 ;Rd[15:8] ¬ Rn[7:0], Rd[7:0] ¬ Rn[15:8],
 ;Rd[31:16] ¬ Rn[7] & 0xFFFF
 ;--------------------------------------------
+;SDIV {Rd,} Rn, Rm ; Signed divide. Rd ¬ Rn / Rm
+;UDIV {Rd,} Rn, Rm ;Unsigned divide. Rd ¬ Rn / Rm
 
 
 				AREA    main, CODE, READONLY
@@ -67,11 +69,12 @@
 __main			PROC
                 LDR R0,=array
 ;---------------------code tai day--------------------------
-				LDR R1,=0x111001A0
-				RBIT R2,R1; R2=0x80800088
-				REV R3,R1; R3=0x01010011
-				REV16 R4,R1; R4=0x00110101
-				REVSH R5,R1;R5=0x00000101
+   mov r1,#(-5) ;x=-5
+   mov r2,#6 ;y=6
+   mov r3,#7;z=7
+   mul r4,r1,r2
+   add r4,r4,r3
+   sub r4,r4,r1
 ;--------------------code tai dau -------------------------								
 stop 			B 		stop     					; dead loop & program hangs here
 
